@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class InputComponent {
 
+  displayVal:string='Enter Text Box Value';
+  getValue(val:string)
+  {
+    this.displayVal=val;
+  }
+
 }
