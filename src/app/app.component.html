@@ -1,7 +1,165 @@
-<!-- <h1>Hello Angular {{title}}</h1>
-<h1>Data: {{data}}</h1> -->
+<!-- 
+<input [(ngModel)]="firstTextBox" type="text"  placeholder="Enter Data"> <br>
+    
+    <br>
+    
+<textarea name="textBox" id="textBox1" cols="35" rows="2"> {{firstTextBox}}</textarea>
 
-<!-- <button (click)="getInput('Yogi')">Click Me</button> -->
+<h2>
+    Menu:
+</h2>
+<label>
+    <input type="radio" [(ngModel)]="Value" value="Cake"> Cake
+</label>
+<label>
+    <input type="radio" [(ngModel)]="Value" value="Pizza"> Pizza
+</label>
+<label>
+    <input type="radio" [(ngModel)]="Value" value="Coke"> Coke
+</label>
+<br>
+<br>
+<textarea cols="35" rows="2">
+    {{Value}}
+</textarea>
 
 
-<app-input></app-input>
+<h2>
+    Price:
+</h2>
+<label>
+    <input type="checkbox" [(ngModel)]="isChecked450"> 450
+  </label>
+  <label>
+    <input type="checkbox" [(ngModel)]="isChecked400"> 400
+  </label>
+  <label>
+    <input type="checkbox" [(ngModel)]="isChecked30"> 30
+  </label>
+  <br>
+  <br>
+  <textarea cols="35" rows="2">{{ getSelectedValues() }}</textarea>
+<br>
+<br>
+
+<h2>
+    Games:
+</h2>
+<br>
+  <select id="drop" [(ngModel)]="dropDown">
+    <option value="" disabled selected>Please Choose...</option>
+    <option *ngFor="let game of Games">
+      {{game}}
+    </option>
+  </select>
+
+  <p>The game you selected: {{dropDown}}</p>    -->
+
+  <h3>
+    Routing example:
+  </h3>
+
+  <a routerLinkActive="active" 
+       routerLink="/login">Login</a> |
+
+    <a routerLinkActive="active" 
+       routerLink="/home">Home</a> | 
+
+    <a routerLinkActive="active" 
+      routerLink="/catalog">Catalog</a> 
+      
+    <router-outlet></router-outlet>
+
+<h2>Employee Record:</h2>
+
+<div>
+  <label>Name: </label>
+  <input type="text" [(ngModel)]="employee.name" /> <br />
+  <br />
+
+  <label>EmpId: </label>
+  <input type="text" [(ngModel)]="employee.empId" /> <br />
+  <br />
+
+  <div>
+    <h4>Gender:</h4>
+    <label for="option1">Male</label>
+    <input
+      type="radio"
+      name="gender"
+      id="option1"
+      [(ngModel)]="employee.gender"
+      value="Male"
+    />
+
+    <label style="margin-left: 10px" for="option2">Female</label>
+    <input
+      type="radio"
+      name="gender"
+      id="option2"
+      [(ngModel)]="employee.gender"
+      value="Female"
+    />
+  </div>
+  <br />
+
+  <label>E-mail: </label>
+  <input type="text" [(ngModel)]="employee.email" /> <br />
+  <br />
+
+  <label>Phone Number: </label>
+  <input type="text" [(ngModel)]="employee.phoneNumber" /> <br />
+  <br />
+
+  <label>Date Of Birth: </label>
+  <input
+    type="date"
+    [(ngModel)]="employee.joiningDate"
+    min="1980-01-01"
+    max="{{formattedDate}}"
+  />
+  <br />
+  <br />
+  <label>Year Of Joining: </label>
+  <select name="dropDown" [(ngModel)]="YOJ" >
+    <option *ngFor="let cur of yearOfJoining">
+      {{cur}}
+    </option>
+  </select>
+  <br />
+  <br />
+
+
+  <!-- Add the submit button -->
+  <button (click)="onSubmit()">Save</button>
+</div>
+
+<!-- Display Employee Data -->
+<h2>Employee Data:</h2>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>EmpId</th>
+      <th>Gender</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Date Of Birth: </th>
+      <th>Year Of Joining</th>
+      <th>Change Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of employees">
+      <td>{{ emp.name }}</td>
+      <td>{{ emp.empId }}</td>
+      <td>{{ emp.gender }}</td>
+      <td>{{ emp.email }}</td>
+      <td>{{ emp.phoneNumber }}</td>
+      <td>{{ emp.joiningDate | date : "dd-MM-yyyy" }}</td>
+      <td>{{YOJ}}</td>
+      <button (click)="editEmployee(emp)">Edit</button>
+      <button  style="margin: 5px;" (click)="deleteEmployee(emp.empId)">Delete</button>
+    </tr>
+  </tbody>
+</table>

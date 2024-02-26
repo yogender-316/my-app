@@ -1,15 +1,14 @@
 
 
-<form style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+<!-- <form style="display: flex; align-items: center; justify-content: center; flex-direction: column;"> -->
   
     <label id="firstTextBox">{{displayVal}}</label> <br>
     <br>
-    <input type="text" #firstTextBox placeholder="Enter Data"> <br>
-    <br>
-    <button type="button" id="submitButton" (click)="getValue(firstTextBox.value)">Submit</button>
+    <input [(ngModel)]="firstTextBox"  type="text"  placeholder="Enter Data"> 
     <br>
     <br>
     <textarea name="textBox" id="textBox1" cols="35" rows="2"> {{displayVal}}</textarea>
+    
 
-  </form>
+  <!-- </form> -->
   
